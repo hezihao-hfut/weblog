@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @SpringBootTest
@@ -37,8 +38,8 @@ class WeblogWebApplicationTests {
         UserDO userDO = UserDO.builder()
                 .username("犬小哈")
                 .password("123456")
-                .createTime(new Date())
-                .updateTime(new Date())
+                .createTime(LocalDateTime.now())
+                .updateTime(LocalDateTime.now())
                 .isDeleted(false)
                 .build();
 

@@ -25,7 +25,6 @@
 			<artifactId>weblog-module-jwt</artifactId>
 		</dependency>
 
-
 		<!-- 免写冗余的 Java 样板式代码 -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -51,7 +50,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
-
 
 	</dependencies>
 

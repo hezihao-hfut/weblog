@@ -17,5 +17,5 @@ spring:
       connection-test-query: SELECT 1 # 用于测试连接是否可用的SQL查询
   security:
     user:
-      name: admin # 登录用户名
-      password: 123456 # 登录密码
+      name: admin
+      password: 123456
