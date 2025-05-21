@@ -11,7 +11,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.Arrays;
 import java.util.Objects;
 
@@ -25,7 +24,7 @@ import java.util.Objects;
 @Slf4j
 public class UserDetailServiceImpl implements UserDetailsService {
 
-    @Resource
+    @Autowired
     private UserMapper userMapper;
 
     @Override
