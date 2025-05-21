@@ -29,9 +29,9 @@
                         class="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="请输入关键词...">
                 </div>
+
                 <!-- 登录 -->
                 <div class="text-gray-900 ml-1 mr-1 hover:text-blue-700" @click="$router.push('/login')">登录</div>
-
 
                 <button data-collapse-toggle="navbar-search" type="button"
                     class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
@@ -80,6 +80,8 @@
         </div>
     </div>
 </nav>
+
+
 </template>
 
 <script setup>
@@ -90,4 +92,5 @@ import { initCollapses } from 'flowbite'
 onMounted(() => {
     initCollapses();
 })
+
 </script>
