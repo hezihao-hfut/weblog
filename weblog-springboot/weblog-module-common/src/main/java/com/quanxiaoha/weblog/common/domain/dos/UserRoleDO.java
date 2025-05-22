@@ -3,7 +3,6 @@ package com.quanxiaoha.weblog.common.domain.dos;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-
 import lombok.Builder;
 import lombok.Data;
 
@@ -19,4 +18,3 @@ public class UserRoleDO {
     private String role;
     private Date createTime;
 }
-
