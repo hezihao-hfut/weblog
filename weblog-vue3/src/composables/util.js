@@ -1,3 +1,5 @@
+import nprogress from "nprogress"
+
 // 消息提示
 export function showMessage(message = '提示内容', type = 'success', customClass = '') {
     return ElMessage({
@@ -6,7 +8,19 @@ export function showMessage(message = '提示内容', type = 'success', customCl
         customClass,
     })
 }
-import nprogress from "nprogress"
+
+// 弹出确认框
+export function showModel(content = '提示内容', type = 'warning', title = '') {
+    return ElMessageBox.confirm(
+        content,
+        title,
+        {
+            confirmButtonText: '确定',
+            cancelButtonText: '取消',
+            type,
+        }
+    )
+}
 
 // 显示页面加载 Loading
 export function showPageLoading() {
