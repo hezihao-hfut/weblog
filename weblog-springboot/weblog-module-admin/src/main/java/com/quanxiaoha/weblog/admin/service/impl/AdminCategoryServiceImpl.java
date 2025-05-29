@@ -16,9 +16,11 @@ import com.quanxiaoha.weblog.common.domain.dos.CategoryDO;
 import com.quanxiaoha.weblog.common.domain.mapper.CategoryMapper;
 import com.quanxiaoha.weblog.common.domain.mapper.UserMapper;
 import com.quanxiaoha.weblog.common.enums.ResponseCodeEnum;
+import com.quanxiaoha.weblog.common.exception.BizException;
 import com.quanxiaoha.weblog.common.model.vo.SelectRspVO;
 import com.quanxiaoha.weblog.common.utils.PageResponse;
 import com.quanxiaoha.weblog.common.utils.Response;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -39,6 +41,7 @@ import java.util.stream.Collectors;
  * @description: TODO
  **/
 @Service
+@Slf4j
 public class AdminCategoryServiceImpl implements AdminCategoryService {
 
     @Autowired
@@ -52,13 +55,23 @@ public class AdminCategoryServiceImpl implements AdminCategoryService {
      */
     @Override
     public Response addCategory(AddCategoryReqVO addCategoryReqVO) {
+        String categoryName = addCategoryReqVO.getName();
+
+        // 先判断该分类是否已经存在
+        CategoryDO categoryDO = categoryMapper.selectByName(categoryName);
+
+        if (Objects.nonNull(categoryDO)) {
+            log.warn("分类名称： {}, 此已存在", categoryName);
+            throw new BizException(ResponseCodeEnum.CATEGORY_NAME_IS_EXISTED);
+        }
+
         // 构建 DO 类
-        CategoryDO categoryDO = CategoryDO.builder()
-                .name(addCategoryReqVO.getName())
+        CategoryDO insertCategoryDO = CategoryDO.builder()
+                .name(addCategoryReqVO.getName().trim())
                 .build();
 
         // 执行 insert
-        categoryMapper.insert(categoryDO);
+        categoryMapper.insert(insertCategoryDO);
 
         return Response.success();
     }
@@ -86,10 +99,10 @@ public class AdminCategoryServiceImpl implements AdminCategoryService {
         LocalDate endDate = findCategoryPageListReqVO.getEndDate();
 
         wrapper
-                .like(StringUtils.isNotBlank(name), CategoryDO::getName, name.trim()) // like 模块查询
-                .ge(Objects.nonNull(startDate), CategoryDO::getCreateTime, startDate) // 大于等于 startDate
-                .le(Objects.nonNull(endDate), CategoryDO::getCreateTime, endDate)  // 小于等于 endDate
-                .orderByDesc(CategoryDO::getCreateTime); // 按创建时间倒叙
+            .like(StringUtils.isNotBlank(name), CategoryDO::getName, name.trim()) // like 模块查询
+            .ge(Objects.nonNull(startDate), CategoryDO::getCreateTime, startDate) // 大于等于 startDate
+            .le(Objects.nonNull(endDate), CategoryDO::getCreateTime, endDate)  // 小于等于 endDate
+            .orderByDesc(CategoryDO::getCreateTime); // 按创建时间倒叙
 
         // 执行分页查询
         Page<CategoryDO> categoryDOPage = categoryMapper.selectPage(page, wrapper);
@@ -111,6 +124,12 @@ public class AdminCategoryServiceImpl implements AdminCategoryService {
         return PageResponse.success(categoryDOPage, vos);
     }
 
+    /**
+     * 删除分类
+     *
+     * @param deleteCategoryReqVO
+     * @return
+     */
     @Override
     public Response deleteCategory(DeleteCategoryReqVO deleteCategoryReqVO) {
         // 分类 ID
@@ -122,6 +141,11 @@ public class AdminCategoryServiceImpl implements AdminCategoryService {
         return Response.success();
     }
 
+    /**
+     * 获取文章分类的 Select 列表数据
+     *
+     * @return
+     */
     @Override
     public Response findCategorySelectList() {
         // 查询所有分类

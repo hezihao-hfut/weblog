@@ -1,4 +1,4 @@
-package com.quanxiaoha.weblog.admin.model.vo.category;
+package com.quanxiaoha.weblog.admin.model.vo.tag;
 
 import io.swagger.annotations.ApiModel;
 import lombok.AllArgsConstructor;
@@ -8,22 +8,23 @@ import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
+import java.util.List;
 
 /**
  * @author: 犬小哈
  * @url: www.quanxiaoha.com
  * @date: 2023-09-15 14:07
- * @description: 删除分类
+ * @description: 标签新增
  **/
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@ApiModel(value = "删除分类 VO")
-public class DeleteCategoryReqVO {
+@ApiModel(value = "添加标签 VO")
+public class AddTagReqVO {
 
-    @NotNull(message = "分类 ID 不能为空")
-    private Long id;
+    @NotEmpty(message = "标签集合不能为空")
+    private List<String> tags;
 
 }
