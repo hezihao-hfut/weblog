@@ -7,7 +7,7 @@ import com.quanxiaoha.weblog.common.utils.Response;
  * @author: 犬小哈
  * @url: www.quanxiaoha.com
  * @date: 2023-09-15 14:03
- * @description: TODO
+ * @description: 用户服务接口
  **/
 public interface AdminUserService {
     /**

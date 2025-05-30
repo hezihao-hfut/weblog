@@ -12,7 +12,7 @@ import com.quanxiaoha.weblog.common.utils.Response;
  * @author: 犬小哈
  * @url: www.quanxiaoha.com
  * @date: 2023-09-15 14:03
- * @description: TODO
+ * @description: 分类接口
  **/
 public interface AdminCategoryService {
     /**
@@ -27,7 +27,7 @@ public interface AdminCategoryService {
      * @param findCategoryPageListReqVO
      * @return
      */
-    PageResponse findCategoryList(FindCategoryPageListReqVO findCategoryPageListReqVO);
+    PageResponse findCategoryPageList(FindCategoryPageListReqVO findCategoryPageListReqVO);
 
     /**
      * 删除分类

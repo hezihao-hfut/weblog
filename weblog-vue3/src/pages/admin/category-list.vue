@@ -204,7 +204,8 @@ const onSubmit = () => {
             console.log('表单验证不通过')
             return false
         }
-        // 
+        
+        // 显示提交按钮 loading
         formDialogRef.value.showBtnLoading()
         addCategory(form).then((res) => {
             if (res.success == true) {
@@ -221,7 +222,7 @@ const onSubmit = () => {
                 // 提示错误消息
                 showMessage(message, 'error')
             }
-        }).finally(() => formDialogRef.value.closeBtnLoading())
+        }).finally(() => formDialogRef.value.closeBtnLoading()) // 隐藏提交按钮 loading
 
     })
 }

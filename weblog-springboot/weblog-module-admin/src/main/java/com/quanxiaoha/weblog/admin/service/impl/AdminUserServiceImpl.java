@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
  * @author: 犬小哈
  * @url: www.quanxiaoha.com
  * @date: 2023-09-15 14:03
- * @description: TODO
+ * @description: 用户服务接口实现
  **/
 @Service
 public class AdminUserServiceImpl implements AdminUserService {

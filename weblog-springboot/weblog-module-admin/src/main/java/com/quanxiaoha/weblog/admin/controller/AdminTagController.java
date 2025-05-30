@@ -4,6 +4,9 @@ import com.quanxiaoha.weblog.admin.model.vo.category.AddCategoryReqVO;
 import com.quanxiaoha.weblog.admin.model.vo.category.DeleteCategoryReqVO;
 import com.quanxiaoha.weblog.admin.model.vo.category.FindCategoryPageListReqVO;
 import com.quanxiaoha.weblog.admin.model.vo.tag.AddTagReqVO;
+import com.quanxiaoha.weblog.admin.model.vo.tag.DeleteTagReqVO;
+import com.quanxiaoha.weblog.admin.model.vo.tag.FindTagPageListReqVO;
+import com.quanxiaoha.weblog.admin.model.vo.tag.SearchTagReqVO;
 import com.quanxiaoha.weblog.admin.service.AdminCategoryService;
 import com.quanxiaoha.weblog.admin.service.AdminTagService;
 import com.quanxiaoha.weblog.common.aspect.ApiOperationLog;
@@ -40,27 +43,27 @@ public class AdminTagController {
         return tagService.addTags(addTagReqVO);
     }
 
-    // @PostMapping("/category/list")
-    // @ApiOperation(value = "分类分页数据获取")
-    // @ApiOperationLog(description = "分类分页数据获取")
-    // public PageResponse findCategoryList(@RequestBody @Validated FindCategoryPageListReqVO findCategoryPageListReqVO) {
-    //     return categoryService.findCategoryList(findCategoryPageListReqVO);
-    // }
-    //
-    // @PostMapping("/category/delete")
-    // @ApiOperation(value = "删除分类")
-    // @ApiOperationLog(description = "删除分类")
-    // @PreAuthorize("hasRole('ROLE_ADMIN')")
-    // public Response deleteCategory(@RequestBody @Validated DeleteCategoryReqVO deleteCategoryReqVO) {
-    //     return categoryService.deleteCategory(deleteCategoryReqVO);
-    // }
-    //
-    // @PostMapping("/category/select/list")
-    // @ApiOperation(value = "分类 Select 下拉列表数据获取")
-    // @ApiOperationLog(description = "分类 Select 下拉列表数据获取")
-    // public Response findCategorySelectList() {
-    //     return categoryService.findCategorySelectList();
-    // }
+    @PostMapping("/tag/list")
+    @ApiOperation(value = "标签分页数据获取")
+    @ApiOperationLog(description = "标签分页数据获取")
+    public PageResponse findTagPageList(@RequestBody @Validated FindTagPageListReqVO findTagPageListReqVO) {
+        return tagService.findTagPageList(findTagPageListReqVO);
+    }
+
+    @PostMapping("/tag/delete")
+    @ApiOperation(value = "删除标签")
+    @ApiOperationLog(description = "删除标签")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public Response deleteTag(@RequestBody @Validated DeleteTagReqVO deleteTagReqVO) {
+        return tagService.deleteTag(deleteTagReqVO);
+    }
+
+    @PostMapping("/tag/search")
+    @ApiOperation(value = "标签模糊查询")
+    @ApiOperationLog(description = "标签模糊查询")
+    public Response searchTag(@RequestBody @Validated SearchTagReqVO searchTagReqVO) {
+        return tagService.searchTag(searchTagReqVO);
+    }
 
 
 }
