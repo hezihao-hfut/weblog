@@ -6,11 +6,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.validator.constraints.Length;
+import lombok.EqualsAndHashCode;
 
-import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 /**
  * @author: 犬小哈
@@ -22,6 +20,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@EqualsAndHashCode(callSuper = false)
 @ApiModel(value = "查询分类分页数据入参 VO")
 public class FindCategoryPageListReqVO extends BasePageQuery {
 

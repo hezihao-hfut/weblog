@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+import lombok.EqualsAndHashCode;
 import java.time.LocalDate;
 
 /**
@@ -19,6 +19,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@EqualsAndHashCode(callSuper = false)
 @ApiModel(value = "查询标签分页数据入参 VO")
 public class FindTagPageListReqVO extends BasePageQuery {
 

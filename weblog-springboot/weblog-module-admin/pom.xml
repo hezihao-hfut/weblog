@@ -61,7 +61,18 @@
 			<artifactId>hibernate-validator</artifactId>
 		</dependency>
 
-	</dependencies>
+        <!-- 对象存储 Minio -->
+        <dependency>
+            <groupId>io.minio</groupId>
+            <artifactId>minio</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
+        </dependency>
+
+    </dependencies>
 
 
 </project>
