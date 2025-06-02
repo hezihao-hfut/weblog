@@ -1,7 +1,5 @@
-
 package com.quanxiaoha.weblog.common.aspect;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+
 import com.quanxiaoha.weblog.common.utils.JsonUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -23,10 +21,12 @@ public class ApiOperationLogAspect {
 
     /** 以自定义 @ApiOperationLog 注解为切点，凡是添加 @ApiOperationLog 的方法，都会执行环绕中的代码 */
     @Pointcut("@annotation(com.quanxiaoha.weblog.common.aspect.ApiOperationLog)")
-    public void apiOperationLog() {}
+    public void apiOperationLog() {
+    }
 
     /**
      * 环绕
+     * 
      * @param joinPoint
      * @return
      * @throws Throwable
@@ -74,6 +74,7 @@ public class ApiOperationLogAspect {
 
     /**
      * 获取注解的描述信息
+     * 
      * @param joinPoint
      * @return
      */
@@ -93,6 +94,7 @@ public class ApiOperationLogAspect {
 
     /**
      * 转 JSON 字符串
+     * 
      * @return
      */
     private Function<Object, String> toJsonStr() {

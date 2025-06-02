@@ -1,11 +1,9 @@
 package com.quanxiaoha.weblog.common.utils;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.quanxiaoha.weblog.common.exception.BaseExceptionInterface;
-import com.quanxiaoha.weblog.common.exception.BizException;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
@@ -16,6 +14,7 @@ import java.util.Objects;
  * @description: 分页响应参数工具类
  **/
 @Data
+@EqualsAndHashCode(callSuper=false)
 public class PageResponse<T> extends Response<List<T>> {
 
     /**
