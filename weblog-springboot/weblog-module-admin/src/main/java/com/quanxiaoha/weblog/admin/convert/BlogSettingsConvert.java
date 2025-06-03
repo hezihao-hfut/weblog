@@ -15,6 +15,7 @@ public interface BlogSettingsConvert {
 
     /**
      * 将 VO 转化为 DO
+     * 
      * @param bean
      * @return
      */
@@ -22,10 +23,10 @@ public interface BlogSettingsConvert {
 
     /**
      * 将 DO 转化为 VO
+     * 
      * @param bean
      * @return
      */
     FindBlogSettingsRspVO convertDO2VO(BlogSettingsDO bean);
 
 }
-
