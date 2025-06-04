@@ -1,6 +1,7 @@
 package com.quanxiaoha.weblog.common.domain.mapper;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.quanxiaoha.weblog.common.domain.dos.TagDO;
@@ -43,5 +44,15 @@ public interface TagMapper extends BaseMapper<TagDO> {
      */
     default List<TagDO> selectByKey(String key) {
         return selectList(new LambdaQueryWrapper<TagDO>().like(TagDO::getName, key).orderByDesc(TagDO::getCreateTime));
+    }
+
+    /**
+     * 根据标签 ID 批量查询
+     * @param tagIds
+     * @return
+     */
+    default List<TagDO> selectByIds(List<Long> tagIds) {
+        return selectList(Wrappers.<TagDO>lambdaQuery()
+                .in(TagDO::getId, tagIds));
     }
 }

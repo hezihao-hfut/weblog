@@ -1,6 +1,7 @@
 package com.quanxiaoha.weblog.admin.convert;
 
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 import com.quanxiaoha.weblog.common.domain.dos.BlogSettingsDO;
 import com.quanxiaoha.weblog.admin.model.vo.blogsettings.UpdateBlogSettingsReqVO;
@@ -19,6 +20,7 @@ public interface BlogSettingsConvert {
      * @param bean
      * @return
      */
+    @Mapping(target = "id", ignore = true)
     BlogSettingsDO convertVO2DO(UpdateBlogSettingsReqVO bean);
 
     /**
