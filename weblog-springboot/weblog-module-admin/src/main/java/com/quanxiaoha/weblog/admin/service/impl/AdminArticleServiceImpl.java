@@ -122,7 +122,7 @@ public class AdminArticleServiceImpl implements AdminArticleService {
         // 筛选提交的标签（表中不存在的标签）
         List<String> notExistTags = null;
         // 筛选提交的标签（表中已存在的标签）
-        List<String> existedTags = null;
+        List<String> existedTags = Lists.newArrayList();
 
         // 查询出所有标签
         List<TagDO> tagDOS = tagMapper.selectList(null);
